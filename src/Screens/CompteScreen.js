@@ -23,6 +23,12 @@ const GestionScreen = () => {
     const [category, setCategory] = React.useState(Data[0].category)
     const [comments, setComments] = React.useState(Data[0].comments)
     const [_id_income, set_id_income] = React.useState(Data[0]._id_income)
+    const formatDate = (date) => {
+        const dateArray = date.split('T')
+        const dateArray2 = dateArray[0].split('-')
+        const dateArray3 = dateArray2[2] + '/' + dateArray2[1] + '/' + dateArray2[0]
+        return dateArray3
+    }
 
     /* calculate total incomes with the amount  */
     const totalIncome = incomes.map(item => item.amount.replace('€', '').replace(',', '')).reduce((acc, item) => parseFloat(acc) + parseFloat(item), 0).toFixed(2)
@@ -61,10 +67,10 @@ const GestionScreen = () => {
                                 <List.Accordion
                                     title={item.category}
                                     description={item.amount}
-                                    left={props => <List.Icon {...props}/>}
+                                    left={props => <List.Icon {...props} />}
                                     key={item._id}
                                 >
-                                    <List.Item title={item.date} />
+                                    <List.Item title={formatDate(item.date)} />
                                     <List.Item titleNumberOfLines={2} title={item.comments} />
                                 </List.Accordion>
                             )
@@ -80,10 +86,10 @@ const GestionScreen = () => {
                                 <List.Accordion
                                     title={item.category}
                                     description={item.amount}
-                                    left={props => <List.Icon {...props}/>}
+                                    left={props => <List.Icon {...props} />}
                                     key={item._id}
                                 >
-                                    <List.Item title={item.date} />
+                                    <List.Item title={formatDate(item.date)} />
                                     <List.Item titleNumberOfLines={2} title={item.comments} />
                                 </List.Accordion>
                             )
@@ -116,21 +122,7 @@ const styles = StyleSheet.create({
         width: '100%',
         marginTop: 10,
         marginBottom: 10,
-    },
-    modal: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 200,
-        marginBottom: 200,
-        marginLeft: 200,
-        marginRight: 200,
-        backgroundColor: '#fff',
-        borderRadius: 20,
-        borderWidth: 1,
-        borderColor: '#fff',
-        padding: 20,
-        width: '100%',
-        height: '100%',
+        backgroundColor: "#D3D0D0"
     },
 })
 

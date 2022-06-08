@@ -11,7 +11,7 @@ const selectId = (id) => {
 
 
 /* target first id from data.json and show name user */
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation }) => {
     const [id, setId] = React.useState(Data[0]._id)
     const [user, setUser] = React.useState(Data[0].user)
     const [incomes, setIncomes] = React.useState(Data[0].incomes)
@@ -31,7 +31,7 @@ const HomeScreen = ({navigation}) => {
     /* calculate total balance with the amount  */
     const totalBalance = (parseFloat(totalIncome) - parseFloat(totalExpenses)).toFixed(2)
 
-    
+
 
     return (
         /* select id with picker */
@@ -53,10 +53,10 @@ const HomeScreen = ({navigation}) => {
                 {Data.map(item => <Picker.Item label={item.user} value={item._id} key={item._id} />)}
             </Picker>
             <View style={styles.container}>
-                <Card style={{width: '100%', height: '50%'}}>
+                <Card style={{ width: '100%', height: '50%' }}>
                     <Card.Title title={user} subtitle="Information du compte" />
                     <Card.Content>
-                        <Paragraph style={[totalBalance > 0 ? {color: 'green'} : {color: 'red'},styles.paragraph]}>Solde du compte: {totalBalance}</Paragraph>
+                        <Paragraph style={[totalBalance > 0 ? { color: 'green' } : { color: 'red' }, styles.paragraph]}>Solde du compte: {totalBalance}</Paragraph>
                         <Paragraph style={styles.paragraphplus}>Total des revenus: +{totalIncome}</Paragraph>
                         <Paragraph style={styles.paragraphless}>Total des dépenses: -{totalExpenses}</Paragraph>
                     </Card.Content>
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: "#D3D0D0",
     },
     paragraph: {
         margin: 24,
@@ -97,19 +98,20 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'center',
+        backgroundColor: 'darkblue',
     },
     paragraphplus: {
         margin: 24,
         fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'center',
-        color: 'green'
+        color: 'green',
     },
     paragraphless: {
         margin: 24,
         fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'center',
-        color: 'red'
+        color: 'red',
     }
 })
